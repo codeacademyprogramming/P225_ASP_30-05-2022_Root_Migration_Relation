@@ -1,0 +1,38 @@
+﻿@*@model List<Student>*@
+@*@model HomeViewModel*@
+@model List<Group>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@*<ul>
+        @foreach (Student student in Model)
+        {
+            <li>@student.Name @student.SurName @student.Age @student.Group.Name</li>
+        }
+    </ul>*@
+
+@*@foreach (var item in Model.Groups)
+    {
+        <h3>@item.Name</h3>
+        <ul>
+            @foreach (var student in Model.Students.Where(s=>s.GroupId == item.Id))
+            {
+                <li>@student.Name @student.SurName @student.Age @student.Group.Name</li>
+            }
+        </ul>
+    }*@
+
+
+@foreach (Group group in Model)
+{
+    <h3>@group.Name</h3>
+    <ul>
+        @foreach (Student student in group.Students)
+        {
+            <li>@student.Name @student.SurName @student.Age @student.Group.Name</li>
+        }
+    </ul>
+}
